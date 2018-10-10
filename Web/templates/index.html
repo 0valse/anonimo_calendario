@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{{ .Description}}">
+    <meta name="author" content="">
+    <link rel="icon" href="https://bootstrap-4.ru/favicon.ico">
+
+    <title>{{ .Title}}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Custom styles for validation -->
+    <link href="/static/css/form-validation.css" rel="stylesheet">
+  
+    <!--
+    <style>
+   .size {
+    white-space: nowrap; /* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    padding: 5px; /* Поля */
+    text-overflow: ellipsis; /* Многоточие */
+   }
+   .size:hover {
+    background: #f0f0f0; /* Цвет фона */
+    white-space: normal; /* Обычный перенос текста */
+   }
+  </style>
+  -->
+    
+  </head>
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="/img/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2>Checkout form</h2>
+        <p class="lead">{{ .Message}}</p>
+      </div>
+
+      <div class="row">
+      
+        <div class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">3</span>
+          </h4>
+          
+          <form class="needs-validation" novalidate="">
+          
+          <ul class="list-group mb-3">
+            <div class=mb-3">
+                <label for="email">Email</label>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div class="input-group" id="email_container">
+                        <input class="form-control" placeholder="you@example.com" type="text" name="mytext[]">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-danger" disabled>Удалить</button>
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+                </li>
+                <button id="my_add_form_field" type="button" class="btn btn-primary btn-lg btn-block btn-sm">Добавить</button>
+            </div>
+          </ul>
+          
+          <!-- 
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+          -->
+          
+          </form>
+          
+        </div>
+        
+        
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">Billing address</h4>
+          <form class="needs-validation" novalidate="">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">First name</label>
+                <input class="form-control" id="firstName" placeholder="" required="" type="text">
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input class="form-control" id="lastName" placeholder="" required="" type="text">
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="username">Username</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input class="form-control" id="username" placeholder="Username" required="" type="text">
+                <div class="invalid-feedback" style="width: 100%;">
+                  Your username is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email <span class="text-muted">(Optional)</span></label>
+              <input class="form-control" id="email" placeholder="you@example.com" type="email">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address">Address</label>
+              <input class="form-control" id="address" placeholder="1234 Main St" required="" type="text">
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+              <span class="size" id="mygeolink"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label for="message">Message</label>
+                <textarea id="mytextarea"></textarea>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">Country</label>
+                <select class="custom-select d-block w-100" id="country" required="">
+                  <option value="" selected="selected">Choose...</option>
+                  <option>United States</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="state">State</label>
+                <select class="custom-select d-block w-100" id="state" required="">
+                  <option value="" selected="selected">Choose...</option>
+                  <option>California</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="zip">Zip</label>
+                <input class="form-control" id="zip" placeholder="" required="" type="text">
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" id="same-address" type="checkbox">
+              <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" id="save-info" type="checkbox">
+              <label class="custom-control-label" for="save-info">Save this information for next time</label>
+            </div>
+            <hr class="mb-4">
+
+            <h4 class="mb-3">Payment</h4>
+
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio">
+                <input id="credit" name="paymentMethod" class="custom-control-input" checked="checked" required="" type="radio">
+                <label class="custom-control-label" for="credit">Credit card</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="debit" name="paymentMethod" class="custom-control-input" required="" type="radio">
+                <label class="custom-control-label" for="debit">Debit card</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="paypal" name="paymentMethod" class="custom-control-input" required="" type="radio">
+                <label class="custom-control-label" for="paypal">PayPal</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-name">Name on card</label>
+                <input class="form-control" id="cc-name" placeholder="" required="" type="text">
+                <small class="text-muted">Full name as displayed on card</small>
+                <div class="invalid-feedback">
+                  Name on card is required
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cc-number">Credit card number</label>
+                <input class="form-control" id="cc-number" placeholder="" required="" type="text">
+                <div class="invalid-feedback">
+                  Credit card number is required
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">Expiration</label>
+                <input class="form-control" id="cc-expiration" placeholder="" required="" type="text">
+                <div class="invalid-feedback">
+                  Expiration date required
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-cvv">CVV</label>
+                <input class="form-control" id="cc-cvv" placeholder="" required="" type="text">
+                <div class="invalid-feedback">
+                  Security code required
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">© 2017-2018 Company Name</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+      </footer>
+      
+    
+    
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+    <script src="/static/js/holder.js"></script>
+    
+    <!-- Editor -->
+    <script src='/static/js/tinymce/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+        selector: 'textarea',
+        skin: 'lightgray',
+        height: 200,
+        menubar: false,
+        language: "ru",
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor textcolor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table contextmenu paste code help wordcount'
+        ],
+        toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+        });
+    </script>
+    
+    <!-- validation js -->
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+    
+    <!-- Ya map -->
+    <script src="https://api-maps.yandex.ru/2.1/?load=Geolink&amp;lang=ru_RU" type="text/javascript"></script>
+    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU&load=SuggestView&onload=onLoad"></script>
+    <script>
+        ymaps.load(function () {
+        var input = document.getElementById('address');
+        
+            var suggestView = new ymaps.SuggestView('address', {
+                offset: [10, 10]
+            });
+
+            suggestView.state.events.add('change', function () {
+                
+                var lnk = document.getElementById('mygeolink');
+                
+                if (input.value.length < 1) {
+                    lnk.textContent = "";
+                }
+            
+                var activeIndex = suggestView.state.get('activeIndex');
+                if (typeof activeIndex == 'number') {
+                    activeItem = suggestView.state.get('items')[activeIndex];
+                    if (activeItem && activeItem.value != input.value) {
+                        input.value = activeItem.value;                        
+                        lnk.textContent = input.value;
+                        if (! lnk.classList.contains('ymaps-geolink')) {
+                            lnk.classList.add('ymaps-geolink');
+                        }
+
+                    }
+                }
+            });
+        });
+    </script>
+    
+    
+    <!-- Dynamic email -->
+    <script>
+        $(document).ready(function() {
+            var max_fields      = 10;
+            var wrapper         = $("#email_container");
+            var add_button      = $("#my_add_form_field");
+        
+            var x = 1;
+            $(add_button).click(function(e){
+                e.preventDefault();
+                if(x < max_fields){
+                    x++;
+                    $(wrapper).append('<div class="input-group" id="appended_email_group"><input class="form-control" placeholder="you@example.com" type="text" name="mytext[]"><div class="input-group-append"><button type="button" id="my_btn_dlt" class="btn btn-outline-danger">Удалить</button></div></div>');
+                }
+                else
+                {
+                    alert('You Reached the limits')
+                }
+                    });
+                $(wrapper).on("click","#my_btn_dlt", function(e){
+                    e.preventDefault();
+                    $("#appended_email_group").remove();
+                    //$(this).parent('div').parent('div').remove();
+                    x--;
+                })
+       });
+    </script>
+  
+</body>
+
+</html>
